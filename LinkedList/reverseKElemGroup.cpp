@@ -25,7 +25,7 @@ void insertAtTail(Node* &head,Node* &tail,int val) {
     }
 }
 
-void print(Node* head) {
+void print(Node* &head) {
     if (head == NULL) {
         cout<<"Linked List is empty"<<endl;
     }
@@ -37,9 +37,51 @@ void print(Node* head) {
     cout<<"NULL"<<endl;
 }
 
+void printReversedKGroups(Node* head, int k) {
+    Node* current = head;
+    Node* prevTail = nullptr;
+
+    while (current != nullptr) {
+        int count = 0;
+        Node* groupStart = current;
+        Node* groupEnd = nullptr;
+
+        // Traverse k elements or until the end of the list
+        while (current != nullptr && count < k) {
+            Node* nextNode = current->next;
+            current->next = groupEnd;
+            groupEnd = current;
+            current = nextNode;
+            count++;
+        }
+
+        if (prevTail != nullptr) {
+            prevTail->next = groupEnd; // Connect previous group to the current reversed group
+        } else {
+            head = groupEnd; // Update the head for the first group
+        }
+
+        prevTail = groupStart;
+    }
+
+    print(head);
+}
+
+int getLength(Node* head) {
+    int len = 0;
+    Node* temp = head;
+    while(temp!=NULL) {
+        len++;
+        temp = temp -> next;
+    }
+    return len;
+}
+
 int main() {
     Node* head = NULL;
     Node* tail = NULL;
+    // Node* curr = head;
+    // Node* prev = NULL;
     int n,x,k;
     cin>>n;
     for(int i=0;i<n;i++) {
@@ -47,7 +89,13 @@ int main() {
         insertAtTail(head,tail,x);
     }
     print(head);
-    cout<<"Enter "
+    cout<<getLength(head)<<endl;
+    cout<<"Enter K no elements to be reversed ";
     cin>>k;
+    // reverseKElem(head,curr,prev,k);
+    // reverseKNodes(head,k);
+    cout << "Reversed Linked List: ";
+    printReversedKGroups(head, k);
+    // print(head);
     return 0;
 }

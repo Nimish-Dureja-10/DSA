@@ -113,14 +113,14 @@ int main(){
     recReverse1(head,curr,prev);
     cout << "Reversed Linked List: ";
     print(head);
-    head = recReverseLL2(head);
-    cout << "Reversed Linked List: ";
-    print(head);
-    head = recReverseLL1(head);
-    cout << "Reversed Linked List: ";
-    print(head);
-    reverseLL(head);
-    cout << "Reversed Linked List: ";
-    print(head);
+    // head = recReverseLL2(head);
+    // cout << "Reversed Linked List: ";
+    // print(head);
+    // head = recReverseLL1(head);
+    // cout << "Reversed Linked List: ";
+    // print(head);
+    // reverseLL(head);
+    // cout << "Reversed Linked List: ";
+    // print(head);
     return 0;
 }
