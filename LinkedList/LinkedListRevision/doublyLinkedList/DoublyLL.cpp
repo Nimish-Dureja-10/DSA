@@ -119,6 +119,34 @@ class DoublyLinkedList{
         }
     }
 
+    void reverseDoublyLL(Node* &head,Node* &tail) {
+        Node* curr = head;
+        while(curr) {
+            Node* forward = curr -> next;
+            curr -> next = curr -> prev;
+            curr -> prev = forward;
+            curr = forward;
+        }
+
+        Node* newHead = tail;
+        tail = head;
+        head = newHead;
+    }
+
+    bool checkPalindrome(Node* head,Node* tail) {
+        Node* start = head;
+        Node* end = tail;
+        while(start!=end) {
+            if(start -> val != end -> val) {
+                return false;
+            }else{
+                start = start -> next;
+                end = end -> prev;
+            }
+        }
+        return true;
+    }
+
     void display(Node* head) {
         Node* temp = head;
         cout<<"NULL<=>";
@@ -131,20 +159,20 @@ class DoublyLinkedList{
 };
 
 int main(){
-    Node* new_node = new Node(3);
-    DoublyLinkedList dll;
-    dll.head = new_node;
-    dll.tail = new_node;
+    // Node* new_node = new Node(3);
+    // DoublyLinkedList dll;
+    // dll.head = new_node;
+    // dll.tail = new_node;
     // cout<<dll.head->val<<endl;
-    dll.insertAtHead(dll.head,2);
-    dll.insertAtHead(dll.head,1);
+    // dll.insertAtHead(dll.head,2);
+    // dll.insertAtHead(dll.head,1);
     // dll.display(dll.head);
-    dll.insertAtTail(dll.head,dll.tail,4);
-    dll.insertAtTail(dll.head,dll.tail,5);
-    dll.insertAtTail(dll.head,dll.tail,6);
+    // dll.insertAtTail(dll.head,dll.tail,4);
+    // dll.insertAtTail(dll.head,dll.tail,5);
+    // dll.insertAtTail(dll.head,dll.tail,6);
     // dll.display(dll.head);
-    dll.insertAtPosition(dll.head,dll.tail,10,7);
-    dll.display(dll.head);
+    // dll.insertAtPosition(dll.head,dll.tail,10,7);
+    // dll.display(dll.head);
     /*
     cout<<dll.tail -> val<<endl;
     dll.deleteHead(dll.head);
@@ -163,5 +191,19 @@ int main(){
     dll.display(dll.head);
     cout<<dll.tail -> val<<endl;
     */
+    // dll.reverseDoublyLL(dll.head,dll.tail);
+    // dll.display(dll.head);
+    // dll.reverseDoublyLL(dll.head,dll.tail);
+    // dll.display(dll.head);
+
+    DoublyLinkedList d;
+    d.insertAtTail(d.head,d.tail,1);
+    d.insertAtTail(d.head,d.tail,2);
+    d.insertAtTail(d.head,d.tail,3);
+    d.insertAtTail(d.head,d.tail,2);
+    d.insertAtTail(d.head,d.tail,1);
+    d.display(d.head);
+    cout<<d.checkPalindrome(d.head,d.tail)<<endl;
+
     return 0;
 }
