@@ -1,19 +1,21 @@
 /*
-Insert a value at the bottom of stack or at any index
+Insert value at a given index in stack
 */
 
 #include <iostream>
 #include <stack>
 using namespace std;
 
-//Time complexity - O(n)
-//space complexity - O(n)
-void insertAtBottom(stack<int> &st,int val) {
+//bottom position index is 0.
+void insertAtIndex(stack<int> &st,int val,int pos) {
     stack<int> temp;
-    while(!st.empty()) {
+    int size = st.size();
+    int counter = size - pos; 
+    while(counter) {
         int curr = st.top();
         st.pop();
         temp.push(curr);
+        counter--;
     }
     st.push(val);
     while(!temp.empty()) {
@@ -23,27 +25,13 @@ void insertAtBottom(stack<int> &st,int val) {
     }
 }
 
-//time complexity - O(n)
-//space complexity - O(n)
-void f(stack<int> &st,int x) {
-    if(st.empty()){
-        st.push(x);
-        return;
-    }
-    int curr = st.top();
-    st.pop();
-    f(st,x);
-    st.push(curr);
-}
-
 int main() {
     stack<int> st;
     st.push(1);
     st.push(2);
     st.push(4);
     st.push(8);
-    // insertAtBottom(st,15);
-    f(st,9);
+    insertAtIndex(st,10,4);
     while(!st.empty()) {
         int curr = st.top();
         st.pop();
