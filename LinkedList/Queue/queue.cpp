@@ -2,6 +2,7 @@
 Queue is a linear data structure.
 Queue if fifo/fcfs(first in first out/first come first serve)
 Queue implementation using Linked List.
+Queue implementation using Linked list is space efficient
 */
 
 #include <iostream>
