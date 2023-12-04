@@ -1,6 +1,8 @@
 {
   "files.associations": {
     "iostream": "cpp",
-    "set": "cpp"
+    "set": "cpp",
+    "vector": "cpp",
+    "ostream": "cpp"
   }
 }

@@ -27,7 +27,6 @@ int leafNode(Node* root) {
     // recursive call
     int leftSubtreeLeafNodes = leafNode(root->left);
     int rigthSubtreeLeafNodes = leafNode(root->right);
-
     return leftSubtreeLeafNodes+rigthSubtreeLeafNodes;
 
 }

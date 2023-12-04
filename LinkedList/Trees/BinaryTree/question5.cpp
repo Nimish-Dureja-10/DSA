@@ -1,10 +1,8 @@
-// Given the root of Binary tree, imagine yourself standing at the right side of it
-// return the values of the nodes you can see from top to bottom.
-// We need to print the right most element at each level.
-
+// Given the binary tree, print the level order traversal of the binary tree in reverse.
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
 using namespace std;
 
 class Node {
@@ -19,31 +17,32 @@ class Node {
     }
 };
 
-vector<int> rightViewBinaryTree(Node* root) {
-    vector<int> ans;
+void reverseOfLevelOrderTraversal(Node* root) {
     if(root==NULL) {
-        return ans;
+        return;
     }
     queue<Node*> q;
+    stack<int> s;
     q.push(root);
     while(!q.empty()){
         int nodesAtCurrLevel = q.size();
-        while(nodesAtCurrLevel) {
+        while(nodesAtCurrLevel--) {
             Node* currNode = q.front();
             q.pop();
-            if(nodesAtCurrLevel==1) {
-                ans.push_back(currNode->value);
+            s.push(currNode->value);
+            if(currNode->right) {
+                q.push(currNode->right);
             }
             if(currNode->left) {
                 q.push(currNode->left);
             }
-            if(currNode->right) {
-                q.push(currNode->right);
-            }
-            nodesAtCurrLevel--;
         }
     }
-    return ans;
+    while(!s.empty()){
+        int value = s.top();
+        cout<<value<<" ";
+        s.pop();
+    }
 }
 
 int main() {
@@ -54,10 +53,6 @@ int main() {
     rootNode->left->right = new Node(5);
     rootNode->right->right = new Node(11);
     rootNode->left->left->right = new Node(12);
-    vector<int> ans = rightViewBinaryTree(rootNode);
-    for(int i : ans) {
-        cout<<i<<" ";
-    }
-    cout<<endl;
+    reverseOfLevelOrderTraversal(rootNode);
     return 0;
 }
