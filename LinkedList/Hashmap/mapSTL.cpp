@@ -3,7 +3,7 @@ map is a stl container which store key value pairs.
 map stores keys in ascending/descending orders. By default in asc order.
 map cannot store duplicate keys.
 
-Member function
+Member functions time complexity O(log n)
 insert(),erase(),swap(),size(),max_size(),clear(),empty(),upper_bound(),
 lower_bound(),find(),count(),begin(),end(),rbegin(),rend().
 */
