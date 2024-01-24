@@ -12,6 +12,14 @@ d) multiplication method - h(k) = floor(M(kA mod 1)). M is the size of hash tabl
 k is the element we are hashing and A is a value 0 < A < 1.
 Collision - when two elements have same hashed value. 
 There are two methods to tackle collision. a) Open Hashing b) Closed Hashing
+In open hashing we use to do seperate chaining which means we add element to the
+back of other element in case of collison in form of linked list.
+In closed hashing we use to do linear probing which means here we store the element
+which is facing collision on (h(k)+i)%M position. M-Size of hash table and i is 0-M.
+This will not cause any space wastage or extra space requirement.
+We have one more closed hashing method known as quadratic probing
+here we do [(h(k)+i^2)%M]. We do quadratic probing because we don't want clusters 
+to form for same mod values.
 */
 
 #include <iostream>
@@ -19,8 +27,9 @@ There are two methods to tackle collision. a) Open Hashing b) Closed Hashing
 #include <list>
 using namespace std;
 
+// All functions are performed in O(1) time complexity.
 class Hashing {
-
+    // Here list is linked list
     vector<list<int> > hashtable;
     int buckets;
 
